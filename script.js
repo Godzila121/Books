@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     async function fetchBooks() {
         try {
-            const response = await fetch("books.json");
+            const response = await fetch("data.json");
             books = await response.json();
             displayBooks(books);
             populateGenres();
@@ -98,3 +98,4 @@ document.addEventListener("DOMContentLoaded", () => {
     
     fetchBooks();
 });
+
