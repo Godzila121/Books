@@ -23,22 +23,35 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Помилка завантаження книг:", error);
         }
     }
+    function displayBooks(bookArray) {
+        bookList.innerHTML = ""; // Очищуємо список перед рендерингом
     
-    function displayBooks(filteredBooks) {
-        bookList.innerHTML = "";
-        filteredBooks.forEach(book => {
-            const bookElement = document.createElement("div");
-            bookElement.classList.add("book");
-            bookElement.innerHTML = `
+        bookArray.forEach(book => {
+            const bookCard = document.createElement("div");
+            bookCard.classList.add("book-card");
+    
+            bookCard.innerHTML = `
+                <img src="${book.image}" alt="${book.title}" class="book-image">
                 <h3>${book.title}</h3>
-                <p>Автор: ${book.author}</p>
-                <p>Жанр: ${book.genre}</p>
-                <p>Ціна: ${book.price} грн</p>
-                <button onclick="addToCart(${book.id})">Додати в кошик</button>
+                <p><strong>Автор:</strong> ${book.author}</p>
+                <p><strong>Жанр:</strong> ${book.genre}</p>
+                <p><strong>Ціна:</strong> ${book.price} грн</p>
+                <button class="add-to-cart" data-id="${book.id}">Додати в кошик</button>
             `;
-            bookList.appendChild(bookElement);
+    
+            bookList.appendChild(bookCard);
+        });
+    
+        // Додаємо обробники подій для кнопок
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", (event) => {
+                const bookId = parseInt(event.target.dataset.id);
+                addToCart(bookId);
+            });
         });
     }
+    
+    
     
     function populateGenres() {
         const genres = [...new Set(books.map(book => book.genre))];
@@ -52,22 +65,33 @@ document.addEventListener("DOMContentLoaded", () => {
     
     function addToCart(bookId) {
         const book = books.find(b => b.id === bookId);
+        
+        if (!book) {
+            console.error("Книга не знайдена!", bookId);
+            return;
+        }
+    
         cartData.push(book);
+        console.log("Додано до кошика:", book);
         updateCart();
     }
+    
     
     function updateCart() {
         cartItems.innerHTML = "";
         let total = 0;
+    
         cartData.forEach(book => {
             const li = document.createElement("li");
             li.textContent = `${book.title} - ${book.price} грн`;
             cartItems.appendChild(li);
             total += book.price;
         });
-        totalPrice.textContent = total;
+    
+        totalPrice.textContent = `Загальна сума: ${total} грн`;
         cartCount.textContent = cartData.length;
     }
+    
     
     genreFilter.addEventListener("change", () => {
         const selectedGenre = genreFilter.value;

@@ -4,34 +4,39 @@
         "title": "Гаррі Поттер і філософський камінь",
         "author": "Дж. К. Ролінг",
         "genre": "Фентезі",
-        "price": 300
+        "price": 300,
+        "image": "harri.jpg"
     },
     {
         "id": 2,
-        "title": "Шерлок Холмс: Зібрання детективів",
+        "title": "Шерлок Холмс",
         "author": "Артур Конан Дойл",
         "genre": "Детектив",
-        "price": 250
+        "price": 250,
+        "image": "sherlok.webp"
     },
     {
         "id": 3,
         "title": "Тарас Бульба",
         "author": "Микола Гоголь",
         "genre": "Класика",
-        "price": 150
+        "price": 150,
+        "image": "taras.webp"
     },
     {
         "id": 4,
         "title": "1984",
         "author": "Джордж Орвелл",
         "genre": "Антиутопія",
-        "price": 280
+        "price": 280,
+        "image": "1984.webp"
     },
     {
         "id": 5,
         "title": "Гобіт",
         "author": "Дж. Р. Р. Толкін",
         "genre": "Фентезі",
-        "price": 320
+        "price": 320,
+        "image": "gobit.webp"
     }
 ]
