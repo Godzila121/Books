@@ -123,3 +123,23 @@ button:hover {
     border-radius: 5px;
     margin-bottom: 10px;
 }
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+footer a {
+    color: #f4a261;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
