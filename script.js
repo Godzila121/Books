@@ -123,3 +123,64 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchBooks();
 });
 
+//
+document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("loginModal");
+    const openBtn = document.getElementById("openLogin");
+    const closeBtn = document.querySelector(".close");
+    const loginForm = document.getElementById("loginForm");
+    const cartButton = document.getElementById("cart-button");
+    const errorMessage = document.getElementById("errorMessage");
+    const managementButton = document.getElementById("management"); // Кнопка "Керування"
+
+    // Спочатку кнопка "Керування" прихована
+    managementButton.style.display = "none";
+
+    openBtn.addEventListener("click", function () {
+        modal.style.display = "block";
+    });
+
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    window.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (username === "" || password === "") {
+            errorMessage.textContent = "Будь ласка, заповніть усі поля!";
+            return;
+        }
+
+        if (username === "admin" && password === "1234") {
+
+            openBtn.textContent = "Профіль";
+            managementButton.style.display = "inline-block";
+            modal.style.display = "none";
+        }else if (username === "user" && password === "1234") {
+            // Вхід як звичайний користувач
+            openBtn.textContent = "Профіль";
+            managementButton.style.display = "none"; // Приховати кнопку "Керування"
+            modal.style.display = "none";
+            localStorage.setItem("userRole", "user"); 
+        }else {
+            errorMessage.textContent = "Невірний логін або пароль!";
+        }
+    });
+
+    managementButton.addEventListener("click", function () {
+        window.location.href = "indexbooks.html"; // Перенаправлення на сторінку з книгами
+    });
+});
+
+
+
