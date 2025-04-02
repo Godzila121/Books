@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     function displayBooks(bookArray) {
-        bookList.innerHTML = ""; // Очищуємо список перед рендерингом
+        bookList.innerHTML = "";
     
         bookArray.forEach(book => {
             const bookCard = document.createElement("div");
@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
             bookList.appendChild(bookCard);
         });
     
-        // Додаємо обробники подій для кнопок
         document.querySelectorAll(".add-to-cart").forEach(button => {
             button.addEventListener("click", (event) => {
                 const bookId = parseInt(event.target.dataset.id);
@@ -131,9 +130,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("loginForm");
     const cartButton = document.getElementById("cart-button");
     const errorMessage = document.getElementById("errorMessage");
-    const managementButton = document.getElementById("management"); // Кнопка "Керування"
+    const managementButton = document.getElementById("management"); 
 
-    // Спочатку кнопка "Керування" прихована
+    
     managementButton.style.display = "none";
 
     openBtn.addEventListener("click", function () {
@@ -167,9 +166,8 @@ document.addEventListener("DOMContentLoaded", function () {
             managementButton.style.display = "inline-block";
             modal.style.display = "none";
         }else if (username === "user" && password === "1234") {
-            // Вхід як звичайний користувач
             openBtn.textContent = "Профіль";
-            managementButton.style.display = "none"; // Приховати кнопку "Керування"
+            managementButton.style.display = "none"; 
             modal.style.display = "none";
             localStorage.setItem("userRole", "user"); 
         }else {
@@ -178,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     managementButton.addEventListener("click", function () {
-        window.location.href = "indexbooks.html"; // Перенаправлення на сторінку з книгами
+        window.location.href = "indexbooks.html";
     });
 });
 

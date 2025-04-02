@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Функція для завантаження книг з JSON файлу
+    
     fetch('data.json')
         .then(response => response.json())
         .then(books => {
@@ -20,13 +20,10 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => console.error('Error loading books:', error));
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const backButton = document.getElementById("backButton");
-            if (backButton) {
-                backButton.addEventListener("click", function () {
-                    window.location.href = "index.html";
-                });
-            }
+    const backButton = document.getElementById("backButton");
+    if (backButton) {
+        backButton.addEventListener("click", function () {
+            window.location.href = "index.html";
         });
-        
+    }
 });

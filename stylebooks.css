@@ -14,8 +14,10 @@ header {
     justify-content: space-between;
     align-items: center;
 }
+h1 {
+    margin: 0;
+}
 
-/* Стилі для блоку з книгами */
 #book-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -23,7 +25,7 @@ header {
     padding: 20px;
 }
 
-/* Стиль для кожної книги */
+
 .book {
     background-color: white;
     border-radius: 8px;
